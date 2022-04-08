@@ -20,6 +20,7 @@ while (num_conn <= 0 and num_conn>25):
 
 # Conectar socket al puerto con su IP respectiva.
 server_address = ('192.168.37.133', 8888)
+#server_address = ('localhost', 8888)
 print('El %s esta esparando en el puerto %s' % server_address)
 sock.bind(server_address)
 
@@ -30,7 +31,7 @@ while file not in ['Prueba_100MB.txt','Prueba_250MB.txt']:
 
 archivoSize = os.path.getsize(file)
 
-log = open("./logs/servidor-"+' '+datetime.today().strftime('%Y-%m-%d-%H-%M-%S')+"log.txt", "w")
+log = open("./logs/servidor-"+datetime.today().strftime('%Y-%m-%d-%H-%M-%S')+"log.txt", "w")
 log.write('Fecha: '+datetime.today().strftime('%Y-%m-%d-%H-%M-%S')+'\n')  
 log.write('El nombre es: '+file+'\n') 
 log.write('El tamaño del archivo es: '+str(archivoSize/1000000)+' MB'+'\n')
