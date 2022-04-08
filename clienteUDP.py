@@ -48,12 +48,14 @@ class Main:
                 err = False
                 while (True):      
                     data,server_addr = sock.recvfrom(1024)
-                    
-                    if data:
+
+                    startTodo= time.time()
+                    if data and time.time()-startTodo <= 2000:
                         try:
+                            
                             file.write(data.decode('utf-8') + os.linesep)
                             num_paq+=1
-                            print('paquete: '+str(num_paq))
+                            # print('paquete: '+str(num_paq))
                             
                         except:
                             err = True

@@ -71,7 +71,7 @@ for i in range(num_conn):
                 sock.sendto(l,client_addr) 
                 l= f.read(1024)
                 num_paq+=1
-                print('paquete:'+str(num_paq))
+                #print('paquete:'+str(num_paq))
             
 
             sock.sendto(l,client_addr) 
