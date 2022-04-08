@@ -23,10 +23,9 @@ class Main:
         sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
         
         # Conectar socket al puerto donde se esta escuchando. IP de maquina virtual Ubuntu.
-        #server_addr = ('192.168.37.133', 8888)
-        server_addr = ('localhost', 8888)
+        server_addr = ('192.168.37.133', 8888)
+        #server_addr = ('localhost', 8888)
         print( 'connecting to %s port %s' % server_addr)
-        #sock.bind(server_addr)
         sock.connect(server_addr)
         file = open("./ArchivosRecibidos/"+nombre+"-prueba-"+str(num_client)+".txt", "w")
         
@@ -37,8 +36,6 @@ class Main:
             sock.sendto(mensaje,server_addr)
         
             confirmacion,server_addr = sock.recvfrom(32)
-            #print(confirmacion.decode('utf-8'))
-            # md5 = hashlib.md5()
             if(confirmacion.decode('utf-8') == "ok"):
                 print('servidor mando ok')
                 sock.sendto(b'Cual es el nombre del archivo?',server_addr)
@@ -46,11 +43,6 @@ class Main:
                 nombreArchivo = nA.decode('utf-8') 
                 log.write('El nombre es: '+nombreArchivo+'\n')
                 sock.sendto(b'listo',server_addr)
-                #self.lock.acquire()
-                #hash = sock.recv(32)
-                #print('Hash enviado por el servidor TCP:',hash.decode('utf-8'))
-                #sock.sendall(b'Hash recibido')
-                #self.lock.release()
                 num_paq=0
                 start = time.time()
                 err = False
@@ -60,7 +52,6 @@ class Main:
                     if data:
                         try:
                             file.write(data.decode('utf-8') + os.linesep)
-                            #md5.update(data)
                             num_paq+=1
                             
                         except:
@@ -74,14 +65,13 @@ class Main:
                         sock.sendto(b'Archivo recibido',server_addr)
                         break
                 end = time.time()
-                tam = os.path.getsize("./archivosRecibidos/"+nombre+"-prueba-"+str(num_client)+".txt")
+                tam = os.path.getsize("./ArchivosRecibidos/"+nombre+"-prueba-"+str(num_client)+".txt")
                 
 
                 file.close()
                 log.write('El nombre del cliente es: '+nombre+'\n')
                 log.write('El tamaño del archivo es: '+str(tam/1000000)+' MB'+'\n')
                 
-                # print("Hash del archivo leido: {0}".format(md5.hexdigest()))
                 if err == False:
                     print("Archivo leido")
                     log.write('Entrega del archivo'+'\n')

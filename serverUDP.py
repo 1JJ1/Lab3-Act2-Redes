@@ -19,8 +19,7 @@ while (num_conn <= 0 and num_conn>25):
 
 
 # Conectar socket al puerto con su IP respectiva.
-# server_address = ('192.168.37.133', 8888)
-server_address = ('localhost', 8888)
+server_address = ('192.168.37.133', 8888)
 print('El %s esta esparando en el puerto %s' % server_address)
 sock.bind(server_address)
 
@@ -43,15 +42,12 @@ buf = archivo.read(1024) #Definimos el tamaño de lectura en 1024 Bytes.
 while(buf):
     buf = archivo.read(1024)
  
-# sock.listen(25)
-
 for i in range(num_conn):
     
     f = open(file,'rb')
     l = f.read(1024)
   
     print ('El servidor esta a la espera de una conexión')
-    #connection, client_addr = sock.accept()
     # Esperando conexion. Deberia llegar iniciar conexion
     connection,client_addr = sock.recvfrom(32)
     print(connection.decode('utf-8'))
@@ -60,7 +56,6 @@ for i in range(num_conn):
     try:
         print ('Conectado de', client_addr)
         
-        #data,client_addr = sock.recv(32)    
         sock.sendto(b'ok',client_addr)
         data,client_addr= sock.recvfrom(32)
         print(data.decode('utf-8'))
@@ -70,9 +65,6 @@ for i in range(num_conn):
         print(data.decode('utf-8'))
         if(data.decode('utf-8')== "listo"):
             
-            # connection.sendall(bytes(md5.hexdigest(), 'utf-8'))
-            #recibido = connection.recv(32)
-            #if(recibido.decode('utf-8') == 'Hash recibido'):
             while (l):
                 sock.sendto(l,client_addr) 
                 l= f.read(1024)
