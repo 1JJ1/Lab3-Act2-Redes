@@ -66,10 +66,14 @@ for i in range(num_conn):
         print(data.decode('utf-8'))
         if(data.decode('utf-8')== "listo"):
             
+            num_paq= 0
             while (l):
                 sock.sendto(l,client_addr) 
                 l= f.read(1024)
+                num_paq+=1
+                print('paquete:'+str(num_paq))
             
+
             sock.sendto(l,client_addr) 
             print('Conexión terminada exitosamente')
             log.write('Entrega del archivo: se envio el archivo '+'\n')  
