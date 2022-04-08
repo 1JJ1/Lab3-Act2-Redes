@@ -6,7 +6,7 @@ import hashlib
 import time
 from datetime import datetime
 
-from django.db import connection
+#from django.db import connection
 
 # Create a UDP socket
 sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
