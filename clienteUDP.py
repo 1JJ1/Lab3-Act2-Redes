@@ -55,7 +55,7 @@ class Main:
                             
                             file.write(data.decode('utf-8') + os.linesep)
                             num_paq+=1
-                            # print('paquete: '+str(num_paq))
+                            #print('paquete: '+str(num_paq))
                             
                         except:
                             err = True

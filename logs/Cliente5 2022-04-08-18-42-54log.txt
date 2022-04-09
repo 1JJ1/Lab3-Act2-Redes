@@ -1,0 +1,7 @@
+El nombre es: Prueba_100MB.txt
+El nombre del cliente es: Cliente5
+El tamaño del archivo es: 96.504599 MB
+Entrega del archivo
+Tiempo de transferencia: 14.493236541748047 segs
+Valor total en bytes recibidos: 96504599
+Cantidad de paquetes recibidos: 93666
