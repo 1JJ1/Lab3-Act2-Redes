@@ -85,10 +85,8 @@ class Main:
                 log.write('Valor total en bytes recibidos: '+str(tam)+'\n')     
                 log.write('Cantidad de paquetes recibidos: '+str(num_paq)+'\n') 
                          
-        finally:
-            
-            print ('Cerrar socket')
-            
+        finally:           
+            print ('Cerrar socket')  
             self.lock.release() 
             print ('Fin del programa')
             log.close()

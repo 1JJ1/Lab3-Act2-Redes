@@ -35,7 +35,6 @@ log = open("./logs/servidor-"+datetime.today().strftime('%Y-%m-%d-%H-%M-%S')+"lo
 log.write('Fecha: '+datetime.today().strftime('%Y-%m-%d-%H-%M-%S')+'\n')  
 log.write('El nombre es: '+file+'\n') 
 log.write('El tamaño del archivo es: '+str(archivoSize/1000000)+' MB'+'\n')
-#TOdo: logs faltantes 
 
 archivo = open(file, 'rb')
 buf = archivo.read(1024) #Definimos el tamaño de lectura en 1024 Bytes.
@@ -71,7 +70,7 @@ for i in range(num_conn):
                 sock.sendto(l,client_addr) 
                 l= f.read(1024)
                 num_paq+=1
-                #print('paquete:'+str(num_paq))
+                print('paquete:'+str(num_paq))
             
 
             sock.sendto(l,client_addr) 
